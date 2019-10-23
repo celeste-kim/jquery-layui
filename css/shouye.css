@@ -1,0 +1,112 @@
+
+/*整个页面的背景色*/
+.layui-body .main{
+	background-color: #F0F0F0;
+}
+
+
+/*四个卡片*/
+.main .row_one>div{
+	width: 150px;
+	height: 100px;
+	border: 2px solid #ededed;
+	background-color: #ffffff;
+}
+
+/*左边文字框*/
+.main .row div.left{
+	float: left;
+	width: 50%;
+	height: 100%;
+	padding-left: 10px;
+}
+
+/*卡片第一个文字框的字体样式*/
+.main .row div.left div.num{
+	font-weight: bolder;
+	font-size: 20px;
+	line-height: 70px;
+	height: 50px;
+}
+
+/*卡片第二个文字框的字体样式*/
+.main .row div.left div.word{
+	font-weight: bolder;
+	line-height: 20px;
+	font-size: 12px;
+}
+
+/*右边的图标*/
+.main .row div.right{
+	float: right;
+	line-height: 100px;
+	text-align: center;
+	width: 50%;
+	height: 100%;
+	font-size: 40px;
+}
+
+/*卡片一的文字框一*/
+div.num_one{
+	color: #FF0083;
+}
+
+/*卡片二的文字框一*/
+div.num_two{
+	color: #069B95;
+}
+
+/*卡片三的文字框一*/
+div.num_three{
+	color: #FF9000;
+}
+
+/*卡片四的文字框一*/
+div.num_four{
+	color: #0080FF;
+}
+
+/*卡片一的图标框一*/
+i.pic_one{
+	color: #FF0083;
+}
+
+/*卡片二的图标框一*/
+i.pic_two{
+	color: #069B95;
+}
+
+/*卡片三的图标框一*/
+i.pic_three{
+	color: #FF9000;
+}
+
+/*卡片四的图标框一*/
+i.pic_four{
+	color: #0080FF;
+}
+
+/*左下方内容区样式*/
+.left_bottom{
+	border: 2px solid #ededed;
+	background-color: #ffffff;
+}
+
+/*左下方第一行下的线*/
+.border_bottom{
+	border-bottom: 2px solid #ededed;
+}
+
+/*“待审核”的样式*/
+.wait>span{
+	font-size: 14px;
+}
+
+/*右下方的内容区*/
+.right_bottom{
+	background-color: #ffffff;
+}
+
+.modal-backdrop{
+	z-index: -1;
+}

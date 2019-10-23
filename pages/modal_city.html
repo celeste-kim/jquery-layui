@@ -1,0 +1,88 @@
+<div>
+	<div class="card" >
+	  <div class="card-header ">
+	    城市
+	  </div>
+	  <div class="card-body city">
+	  </div>
+	  <a href="#" class="btn btn-dark" id="btn_add">添加</a>
+	</div>
+<!-- 模态框 -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">添加城市</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+		    <label for="inputEmail3" class="col-sm-3 col-form-label">城市名称</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="inputEmail3" name="name">
+		    </div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="save">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /模态框 -->
+</div>
+<script>
+$(function(){
+	//添加
+	$('#btn_add').on('click',function(){
+		$('#myModal').modal('show');
+	})
+	$('#save').on('click',function(){
+		var name = $('input[name=name]').val();
+		var provinceId = 8;
+		var url = baseURL+'/City/saveOrUpdate';
+		var data = {
+			name:name,
+			provinceId:provinceId
+		}
+		$.post(url,data,function(res){
+			if(res.status==200){
+				message('保存成功！');
+					reloadData();
+			}else{
+				message('保存失败！');
+
+			}
+		})
+		$('#myModal').modal('hide');
+		$('.modal-body input').val("");
+	})
+	//添加结束
+	reloadData();
+	function reloadData(){
+		$('.city').empty();
+		$.get(baseURL+'/City/findAll',function(res){
+			res.data.forEach(function(item,index){
+				$(`<span>`+item.name+`</span>`).appendTo($('.city'));
+			})
+		})
+	}
+})
+
+
+</script>
+
+
+
+<style>
+	.city>span{
+		padding: 20px;
+	}
+	.modal-backdrop{
+		z-index: -1;
+	}
+</style>

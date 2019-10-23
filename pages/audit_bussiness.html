@@ -1,0 +1,96 @@
+<script src="./js/audit_bussiness.js"></script>
+<div>
+	<!-- 下拉列表框 -->
+	<div class="search row">
+		<select class="form-control col-2 mx-2" id="one">
+		  <option value="all">所有</option>
+		</select>
+	</div>
+<!-- 下拉列表框结束 -->
+<!-- 表格开始 -->
+	<table class="table table-hover my-3 table-sm text-center" id="business_tbl">
+	  <thead class="">
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">企业名称</th>
+	      <th scope="col">联系人</th>
+	      <th scope="col">联系方式</th>
+	      <th scope="col">行业</th>
+	      <th scope="col">所在地</th>
+	      <th scope="col">公司规模</th>
+	      <th scope="col">详情</th>
+	      <th scope="col">操作</th>
+	    </tr>
+	  </thead>
+	  <tbody id="business_tbody">	    
+	  </tbody>
+	</table>
+<!-- 表格结束 -->
+<!-- 详情模态框开始 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+    <!-- 头部 -->
+      <div class="head" style="border-bottom:1px solid #ccc;">
+      <!-- 公司名称 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="name col-9" style="font-size:18px;margin:15px 0 10px 0;overflow:hidden;"></div>
+      		
+      	</div>
+      	<!-- /公司名称 -->
+      	<!-- 行业类型 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="industry col-9" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;"></div>
+      	</div>  
+       	<!-- /行业类型 -->
+       	<!-- 规模 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="scale col-9" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;"></div>
+      	</div>
+        <!-- /规模 -->
+        <button type="button" class="close" data-dismiss="modal">
+          
+        </button>
+      </div>
+        <!-- /头部 -->
+        <!-- 中间部分 -->
+      <div class="modal-body" style="border-bottom:1px solid #ccc;">
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="overflow:hidden;color:#aaa;padding-left:0;">行业类型：</div>
+      		<div class="col-8 industry"></div>
+      	</div>
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;padding-left:0;">成立时间：</div>
+      		<div class="col-8 establishedTime"></div>
+      	</div>
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;padding-left:0;">注册资本：</div>
+      		<div class="col-8 registeredCapital"></div>
+      	</div>
+      </div>
+      <!-- 中间分割线 -->
+      <div class="modal-body">
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-8 description" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;padding-left:0;"></div>
+      		<!-- <div class=" industry"></div> -->
+      	</div>
+      </div>
+      <!-- /中间部分 -->
+      <!-- 底部 -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+      <!-- 底部 -->
+    </div>
+  </div>
+</div>
+<!-- 模态框结束 -->
+</div>

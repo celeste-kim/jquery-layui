@@ -1,0 +1,270 @@
+<link rel="stylesheet" href="./css/zhaopin.css">
+ <script type="text/javascript" src="./js/zhaopin_one.js"></script>
+  <script type="text/javascript" src="./js/common.js"></script>
+<div>
+<!-- 导航栏 -->
+	<div class="layui-tab mr-auto">
+	  <!-- 搜索框 -->
+		<div class="row mb-3">
+			<div class="btn-group col-2 ">
+			    <select class="form-control  btns" id="two">
+	    			<option value="all">职位类型</option>
+	        	</select>
+			    <div class="dropdown-menu dropdown-menu-right">
+			    </div>
+			</div>
+			<div class="input-group col-3 ml-auto">
+			    <input type="text" class="form-control" placeholder="请输入关键字" id="inp">
+			    <div class="input-group-append">
+			    	<button type="button" class="btn btn-outline-secondary" id="btn_search">查询</button>
+			    </div>
+			</div>
+		</div>
+		<!-- /搜索框 -->
+	    <div class="layui-tab-content">
+		  <!-- 招聘中 -->
+		    <div class="layui-tab-item layui-show">
+				<!-- 表格 -->
+				<table class="table" id="employment_tbl">
+				    <tbody id="employment_tbody1">
+				    </tbody>
+				</table>
+				<!-- /表格 -->
+		    </div>
+		    <!-- /招聘中 -->
+	    </div>
+	</div>
+<!-- /导航栏 -->
+<!-- 发布模态框 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="first">发布职位</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <!-- 表单开始 -->
+      	<form>
+      	<input type="text" name="id" hidden>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">兼职名称</label>
+		    	<input class="form-control form-control-sm col-8" type="text" name="title">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label class="col-4">招聘人数</label>
+			   <input class="form-control form-control-sm col-8" type="text" name="num">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">选择工种</label>
+		    	<select class="form-control form-control-sm col-8" id="three">
+		    		<option value="">工种</option>
+		        </select>
+		  	</div>
+			<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">招聘公司</label>
+		    	<select class="form-control form-control-sm col-8" id="four">
+		    		<option value="">公司</option>
+		        </select>
+		  	</div>
+			<div class="col-1"></div>
+      	</div>
+		<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="text-sm col-4">薪资水平</label>
+		    	<input class="form-control form-control-sm col-8" type="text" name="salary">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label for="exampleFormControlInput1" class="col-4">职位标签</label>
+			   <input class="form-control form-control-sm col-8" type="text"  name="welfare">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row text-center">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="text-sm col-4">职位状态</label>
+		    	<input class="form-control form-control-sm col-8" type="text" name="status">
+		  	</div>
+			<div class="form-group col-5 row">
+			   <label for="exampleFormControlTextarea1" class="col-3">公司简介</label>
+		    	<textarea class="form-control col-9" id="exampleFormControlTextarea1" rows="2" name="description"></textarea>    
+			</div>
+			<div class="col-1"></div>
+      	</div>
+		</form>
+      <!-- 表单结束 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="employment_sub">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /模态框 -->
+<!-- 修改模态框 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="updModal" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="first">修改招聘</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <!-- 表单开始 -->
+      	<form>
+      	<input type="text" name="id" hidden>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">兼职名称</label>
+		    	<input class="form-control form-control-sm col-8" type="text" name="name">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label class="col-4">招聘人数</label>
+			   <input class="form-control form-control-sm col-8" type="text" name="num">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">选择工种</label>
+		    	<select class="form-control form-control-sm col-8" id="five">
+		    		<option value="">工种</option>
+		        </select>
+		  	</div>
+			<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">招聘公司</label>
+		    	<select class="form-control form-control-sm col-8" id="six">
+		    		<option value="">公司</option>
+		        </select>
+		  	</div>
+			<div class="col-1"></div>
+      	</div>
+		<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="text-sm col-4">薪资水平</label>
+		    	<input class="form-control form-control-sm col-8" type="text" name="salary">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label for="exampleFormControlInput1" class="col-4">职位标签</label>
+			   <input class="form-control form-control-sm col-8" type="text"  name="welfare">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row text-center">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="text-sm col-4">招聘状态</label>
+		    	<input class="form-control form-control-sm col-8" type="text" name="status">
+		  	</div>
+			<div class="form-group col-5 row">
+			   <label for="exampleFormControlTextarea1" class="col-3">职位描述</label>
+		    	<textarea class="form-control col-9" id="exampleFormControlTextarea1" rows="2" name="description"></textarea>    
+			</div>
+			<div class="col-1"></div>
+      	</div>
+		</form>
+      <!-- 表单结束 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="employment_sub2">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /模态框 -->
+<!-- 详情模态框开始 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+    <!-- 头部 -->
+      <div class="head" style="border-bottom:1px solid #ccc;">
+      <!-- 公司名称 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="name col-9" style="font-size:18px;margin:15px 0 10px 0;overflow:hidden;"></div>
+      		<div class="salary col-2" style="font-size:18px;margin:15px 0 10px 0;overflow:hidden;">	</div>
+      	</div>
+      	<!-- /公司名称 -->
+      	<!-- 人数 工作时间 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="col-1 num" style="margin-top:10px;overflow:hidden;margin:0;">
+      		</div>
+      		<div class="col-2 workingHours" style="margin-top:10px;overflow:hidden;margin:0;">	</div>
+      	</div>  
+       	<!-- /人数 工作时间 -->
+       	<!-- 地点 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="col-3 row city" style="margin-top:10px;overflow:hidden;margin:0;">
+      		</div>
+      	</div>  
+       	<!-- /地点 -->
+       	<!-- 福利 公司 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="col-2 welfare" style="margin-top:10px;overflow:hidden;margin:0;">
+      		</div>
+      		<div class="col-7">	</div>
+      		<div class="col-1 businessId" style="margin-top:10px;overflow:hidden;margin:0;">
+      		</div>
+      		<div class="col-1"></div>
+      	</div>  
+       	<!-- /福利 公司 -->
+        <button type="button" class="close" data-dismiss="modal">
+          
+        </button>
+      </div>
+        <!-- /头部 -->
+        <!-- 中间部分 -->
+      <div class="modal-body" style="border-bottom:1px solid #ccc;">
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="overflow:hidden;padding-left:0;">职位描述：</div>
+      		<div class="col-8 description"></div>
+      	</div>
+      </div>
+      <!-- /中间部分 -->
+      <!-- 底部 -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+      <!-- 底部 -->
+    </div>
+  </div>
+</div>
+<!-- 模态框结束 -->
+<!-- toast -->
+    <div class="toast" style="position: absolute; top: 5rem; right: 3rem; width:200px">
+      <div class="toast-header bg-primary text-light">
+        <i class="rounded mr-2 fa fa-check-circle"></i>
+        <strong class="mr-auto">success</strong>
+        <button type="button" id="toast_close" class="ml-2 mb-1 close">
+           <span id="close" class="text-light">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body"></div>
+    </div>
+	<!-- /toast -->
+
+</div>

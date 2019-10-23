@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="./css/zhaopin.css">
+<script type="text/javascript" src="./js/common.js"></script>
+<div class="main">
+<!-- 导航栏 -->
+	<div class="layui-tab mr-auto">
+	  <ul class="layui-tab-title">
+	    <li class="layui-this">商家审核</li>
+	    <li>招聘审核</li>
+	  </ul>
+	  <div class="cont" id="cont">
+	  </div>
+	</div>
+<!-- /导航栏 -->
+<!-- toast -->
+    <div class="toast" style="position: absolute; top: 5rem; right: 3rem; width:200px">
+      <div class="toast-header bg-primary text-light">
+        <i class="rounded mr-2 fa fa-check-circle"></i>
+        <strong class="mr-auto">success</strong>
+        <button type="button" id="toast_close" class="ml-2 mb-1 close">
+           <span id="close" class="text-light">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body"></div>
+    </div>
+	<!-- /toast -->
+</div>
+<script>
+	$(function(){
+		$('#cont').load('./pages/audit_bussiness.html')
+		$('.main').on({
+			click:function(){
+				if($(this).text()=='商家审核'){
+					$('#cont').load('./pages/audit_bussiness.html')
+				}
+				if($(this).text()=='招聘审核'){
+					$('#cont').load('./pages/audit_employment.html')
+				}
+			}
+		},'li')
+	})
+</script>

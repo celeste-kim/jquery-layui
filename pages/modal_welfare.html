@@ -1,0 +1,197 @@
+<div>
+	<!-- 搜索框 -->
+	<div class="row mb-3">
+		<div class="btn-group col-3 ">
+		  <select class="form-control  btns mr-4" id="two">
+    		<option value="all">全部</option>
+        	</select>
+		  <div class="dropdown-menu dropdown-menu-right">
+		  </div>
+		</div>
+		<div class="col-2 ml-auto">
+			<button type="button" class="btn btn-danger btn_del">删除</button>
+		</div>
+		
+	</div>
+	<!-- /搜索框 -->
+	<!-- 表格 -->
+	<table class="table" id="welfare_tbl">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">福利名称</th>
+	      <th scope="col">状态</th>
+	      <th scope="col">操作</th>
+	    </tr>
+	  </thead>
+	  <tbody id="welfare_tbody">
+	  </tbody>
+	</table>
+	<!-- /表格 -->
+</div>
+<script>
+$(function(){
+	//调用重载函数
+	reloadData();
+	//调用加载下拉列表函数
+	loadOption();
+	//批量删除
+ $('.btn_del').click(function(){
+ 	var ids = [];
+ 	var check = $("input:checkbox:checked");
+ 	check.each(function(){
+ 		ids.push(this.value);
+ 	})
+ 	console.log(ids);
+ 	var arr = [];
+ 	ids.forEach(function (item,index){
+   		arr.push(parseInt(item));
+   	})
+   	console.log(arr);
+   	arr.forEach(function (item,index){
+   		var url = baseURL+"/Welfare/deleteById?id=";
+   		url=url+item;
+   		console.log(url)
+   		$.post(url,function(res){
+			if(res.status==200){
+					message('删除成功！');
+
+				}else{
+					message('删除失败！');
+				}
+		}); 
+   	})
+   	//写在遍历外面 
+   	reloadData();
+
+ })
+//批量删除结束	
+	//将模态框中的下拉列表框中数据填进去
+	function loadOption(){
+		$.get(baseURL+'/Welfare/findAll',function(res){
+			res.data.forEach(function(item,index){
+				$('<option value='+item.name+'>'+item.name+'</option>').appendTo($('#two'));
+			})
+		})
+	}
+	//筛选
+	$('#two').change(function(){
+		var val = $(this).val();
+		console.log(val);
+		//清空表
+		$('#welfare_tbody').empty();
+		$.get(baseURL+'/Welfare/findAll',function(res){
+			console.log(res.data);
+			//当筛选条件为全部的时候
+			if(val=='all'){
+					reloadData();
+			}
+			// loadOption();
+			res.data.forEach(function(item,index){
+				//当名字跟筛选值相同的时候，追加一行数据
+				if(item.name==val){
+
+					if(item.status=='被冻结'){
+					var newTr = $(`<tr>
+					<td><input type="checkbox" value="`+item.id+`" name="#user_id"/></td>
+					<td id="name">`+item.name+`</td>
+					<td style="color:red;">`+item.status+`</td>
+					<td><button type="button" class="btn btn-sm btn-success id="recover">恢复</button></td></tr>`);
+				$('#welfare_tbody').append(newTr);
+				}
+				if(item.status=='使用中'){
+					var newTr = $(`<tr>
+					<td><input type="checkbox" value="`+item.id+`" name="#user_id"/></td>
+					<td>`+item.name+`</td>
+					<td style="color:green;">`+item.status+`</td>
+					<td id="four"><button type="button" class="btn btn-sm btn-danger" id="cold">冻结</button></td></tr>`);
+				$('#welfare_tbody').append(newTr);
+				}
+
+				}
+			})
+			
+		})
+	})
+	//筛选结束
+	//修改其状态
+	$('#welfare_tbody').on('click','button',function(){
+		//获取id
+		var id = $(this).parents('tr').children().eq(0).find('input').val();
+		//获取名字
+		var name = $(this).parents('tr').children().eq(1).text();
+		var url =baseURL+'/Welfare/saveOrUpdate';
+		//switch开始
+		switch($(this).text()){
+			case '恢复':
+			var status = '使用中';
+			var data1 = {
+				id:id,
+				name:name,
+				status:status
+			}
+			$.post(url,data1,function(res){
+				if(res.status==200){
+					reloadData();
+					message('修改成功！');
+
+				}else{
+					message('修改失败！');
+				}
+			})
+			break;
+			case '冻结':
+			var status = '被冻结';
+			var data1 = {
+				id:id,
+				name:name,
+				status:status
+			}
+			$.post(url,data1,function(res){
+				if(res.status==200){
+					reloadData();
+					message('修改成功！');
+
+				}else{
+					message('修改失败！');
+				}
+			})
+			break;
+			
+		}
+		//switch结束
+	})
+//修改状态结束
+//重载数据
+	function reloadData(){
+		var url = baseURL+'/Welfare/findAll';
+		$('#welfare_tbody').empty();
+		$.get(url,function(res){
+			res.data.forEach(function(item){
+				
+				if(item.status=='被冻结'){
+					var newTr = $(`<tr>
+					<td><input type="checkbox" value="`+item.id+`" name="#user_id"/></td>
+					<td id="name">`+item.name+`</td>
+					<td style="color:red;">`+item.status+`</td>
+					<td><button type="button" class="btn btn-sm btn-success id="recover">恢复</button></td></tr>`);
+				$('#welfare_tbody').append(newTr);
+				}
+				if(item.status=='使用中'){
+					var newTr = $(`<tr>
+					<td><input type="checkbox" value="`+item.id+`" name="#user_id"/></td>
+					<td>`+item.name+`</td>
+					<td style="color:green;" >`+item.status+`</td>
+					<td id="four"><button type="button" class="btn btn-sm btn-danger" id="cold">冻结</button></td></tr>`);
+				$('#welfare_tbody').append(newTr);
+				}
+			})
+
+		})
+	}
+//重载结束	
+})
+
+
+	
+</script>

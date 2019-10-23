@@ -1,0 +1,18 @@
+.btns{
+	border: 1px solid #aaa;
+}
+.layui-tab{
+	margin-bottom: 0px;
+}
+.modal-backdrop{
+	z-index: -1;
+}
+.btn1{
+	position: absolute;
+	/*bottom:1.8rem;*/
+	/*top: 1.8rem;*/
+	right: 2.5rem;
+	border: ;
+	/*background-color: orange;*/
+
+}

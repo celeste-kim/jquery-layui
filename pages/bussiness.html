@@ -1,0 +1,192 @@
+﻿<link rel="stylesheet" href="./css/bussiness.css">
+<script src="./js/bussiness.js"></script>
+<div class="main">
+<!-- 导航栏 -->
+	<div class="layui-tab">
+	  <ul class="layui-tab-title">
+	    <li class="layui-this">商家列表</li>
+	  </ul>
+	</div>
+<!-- /导航栏 -->
+<!-- 下拉列表框 -->
+<div class="search row">
+		<select class="form-control col-2 mx-2" id="one">
+		  <option value="all">所在地</option>
+		</select>
+		<select class="form-control col-2 mx-2" id="two">
+		  <option value="all">规模</option>
+		</select>
+		<select class="form-control col-2 mx-2" id="three">
+		  <option value="all">行业</option>
+		</select>
+	</div>
+<!-- 下拉列表框结束 -->
+<!-- 表格开始 -->
+	<table class="table table-hover my-3 table-sm text-center" id="business_tbl">
+	  <thead class="">
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">企业名称</th>
+	      <th scope="col">联系人</th>
+	      <th scope="col">联系方式</th>
+	      <th scope="col">行业</th>
+	      <th scope="col">所在地</th>
+	      <th scope="col">公司规模</th>
+	      <th scope="col">详情</th>
+	      <th scope="col">操作</th>
+	    </tr>
+	  </thead>
+	  <tbody id="business_tbody">	    
+	  </tbody>
+	</table>
+<!-- 表格结束 -->
+<!-- 修改模态框开始 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="first">修改商家信息</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <!-- 表单开始 -->
+      	<form>
+      	<input type="text" name="id" hidden>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">公司名称</label>
+		    	<input class="form-control form-control-sm col-8" type="text" placeholder="请输入公司名称" name="name">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label class="col-4">所属行业</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入你的行业" name="industry">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="col-4">公司规模</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入公司规模" name="scale">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label for="exampleFormControlInput1" class="col-4">所在城市</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入你的城市" name="contactPhone">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+		<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="text-sm col-4">联系人</label>
+		    	<input class="form-control form-control-sm col-8" type="text" placeholder="请输入联系人姓名" name="contactName">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label for="exampleFormControlInput1" class="col-4">联系方式</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入联系方式" name="location">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-1"></div>
+		  	<div class="form-group col-10">	  	
+		    <label for="exampleFormControlTextarea1">公司简介</label>
+		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>    
+		  	</div>
+		  	<div class="col-1"></div>
+      	</div>
+		</form>
+      <!-- 表单结束 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="address_sub">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 模态框结束 -->
+<!-- 详情模态框开始 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+    <!-- 头部 -->
+      <div class="head" style="border-bottom:1px solid #ccc;">
+      <!-- 公司名称 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="name col-9" style="font-size:18px;margin:15px 0 10px 0;overflow:hidden;"></div>
+      		
+      	</div>
+      	<!-- /公司名称 -->
+      	<!-- 行业类型 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="industry col-9" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;"></div>
+      	</div>  
+       	<!-- /行业类型 -->
+       	<!-- 规模 -->
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class="scale col-9" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;"></div>
+      	</div>
+        <!-- /规模 -->
+        <button type="button" class="close" data-dismiss="modal">
+          
+        </button>
+      </div>
+        <!-- /头部 -->
+        <!-- 中间部分 -->
+      <div class="modal-body" style="border-bottom:1px solid #ccc;">
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="overflow:hidden;color:#aaa;padding-left:0;">行业类型：</div>
+      		<div class="col-8 industry"></div>
+      	</div>
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;padding-left:0;">成立时间：</div>
+      		<div class="col-8 establishedTime"></div>
+      	</div>
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-2" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;padding-left:0;">注册资本：</div>
+      		<div class="col-8 registeredCapital"></div>
+      	</div>
+      </div>
+      <!-- 中间分割线 -->
+      <div class="modal-body">
+      	<div class="row" >
+      		<div class="col-1"></div>
+      		<div class=" col-8 description" style="margin-top:10px;overflow:hidden;margin:0;color:#aaa;padding-left:0;"></div>
+      		<!-- <div class=" industry"></div> -->
+      	</div>
+      </div>
+      <!-- /中间部分 -->
+      <!-- 底部 -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+      <!-- 底部 -->
+    </div>
+  </div>
+</div>
+<!-- 模态框结束 -->
+<!-- toast -->
+    <div class="toast" style="position: absolute; top: 2rem; right: 3rem; width:200px">
+      <div class="toast-header bg-primary text-light">
+        <i class="rounded mr-2 fa fa-check-circle"></i>
+        <strong class="mr-auto">success</strong>
+        <button type="button" id="toast_close" class="ml-2 mb-1 close">
+           <span id="close" class="text-light">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body"></div>
+    </div>
+	<!-- /toast -->
+</div>

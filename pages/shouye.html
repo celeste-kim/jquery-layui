@@ -1,0 +1,215 @@
+<link rel="stylesheet" href="./css/shouye.css">
+<script type="text/javascript" src="./js/shouye.js"></script>
+<div class="main">
+<!-- 卡片 -->
+    <!-- 第一行 -->
+	<div class="row row_one mx-3 mt-3 pb-2">
+		<!-- 卡片一 -->
+	    <div class="col mr-4 one  ">
+	    	<div class="left">
+	    		<div class="num num_one">78645</div>
+	    		<div class="word word_one">简历</div>
+	    	</div>
+	    	<div class="right">
+	    		<i class="fa fa-file-text-o pic pic_one"></i>
+	    	</div>
+	    </div>
+	    <!-- /卡片一 -->
+		<!-- 卡片二 -->
+	    <div class="col mr-4 two  ">
+	    	<div class="left">
+	    		<div class="num num_two">4235234</div>
+	    		<div class="word word_one">用户</div>
+	    	</div>
+	    	<div class="right">
+	    		<i class="fa fa-user-o pic pic_two"></i>
+	    	</div>
+	    </div>
+	    <!-- /卡片二 -->
+	    <!-- 卡片三 -->
+	    <div class="col mr-4 three  ">
+	    	<div class="left">
+	    		<div class="num num_three">23425</div>
+	    		<div class="word word_one">商家</div>
+	    	</div>
+	    	<div class="right">
+	    		<i class="fa fa-registered pic pic_three"></i>
+	    	</div>
+	    </div>
+	    <!-- /卡片三 -->
+	    <!-- 卡片四 -->
+	    <div class="col four  ">
+	    	<div class="left">
+	    		<div class="num num_four">234</div>
+	    		<div class="word word_one">浏览</div>
+	    	</div>
+	    	<div class="right">
+	    		<i class="fa fa-eye pic pic_four"></i>
+	    	</div>
+	    </div>
+	    <!-- /卡片四 -->
+	</div>
+	<!-- /第一行 -->
+<!-- /卡片 -->
+<!-- 下面内容 -->
+	<div class="content row mx-3 mt-4">
+		<!-- 左下侧 -->
+		<div class="left_bottom col-8">
+			<!-- 第一行 -->
+			<div class="row pl-4 pb-2 mt-2 border_bottom wait">
+				<span class="font-weight-bold">待审核</span>
+			</div>
+			<!-- 第二行 -->
+			<div class="row ml-2 py-2">
+				<button class="btn btn-sm btn-secondary mr-3 bussiness">&nbsp;&nbsp;商家&nbsp;&nbsp;</button>
+				<button class="btn btn-sm btn-outline-secondary mr-auto employment">&nbsp;&nbsp;招聘&nbsp;&nbsp;</button>
+				<a href="javascription:void(0)" class="mr-4 font-weight-bold">Go<i class="fa ml-1 fa-arrow-right"></i></a>
+			</div>
+			<!-- 第三行 -->
+			<div class="row">
+				<table class="table table-sm text-center" id="shouye_tbl">
+				    <thead>
+				    </thead>
+				    <tbody id="shouye_tbody">
+				    </tbody>
+				</table>
+			</div>
+			<!-- 第四行 -->
+			<div class="row mt-2">
+				<div class="col-8"></div>
+				<nav aria-label="Page navigation example" class="col-3">
+				  <ul class="pagination">
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
+		</div>
+		<!-- /左下侧 -->
+		<!-- 右下侧 -->
+		<div class="right_bottom ml-4 col">
+			<div class="row py-3 pl-3 font-weight-bolder">热门招聘</div>
+			<div class="row">
+				<table class="table">
+				  <tbody>
+				    <tr>
+				      <td colspan="2">Mark</td>
+				      <td class="text-right"><span class="badge badge-primary badge-pill">14</span></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2">Jacob</td>
+				      <td class="text-right"><span class="badge badge-danger badge-pill">6</span></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2">Larry</td>
+				      <td class="text-right"><span class="badge badge-success badge-pill">1</span></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2">Mark</td>
+				      <td class="text-right"><span class="badge badge-dark badge-pill">9</span></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2">Mark</td>
+				      <td class="text-right"><span class="badge badge-info badge-pill">5</span></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2">Mark</td>
+				      <td class="text-right"><span class="badge badge-secondary badge-pill">28</span></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2">Mark</td>
+				      <td class="text-right"><span class="badge badge-warning badge-pill">11</span></td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /右下侧 -->
+	</div>
+	<!-- /下面内容 -->
+</div>
+<!-- 模态框开始 -->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="first">修改商家信息</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <!-- 表单开始 -->
+      	<form>
+      	<input type="text" name="id" hidden>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">公司名称</label>
+		    	<input class="form-control form-control-sm col-8" type="text" placeholder="请输入公司名称" name="name">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label class="col-4">所属行业</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入你的行业" name="industry">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label class="text-sm col-4">公司规模</label>
+		    	<select class="form-control form-control-sm col-8" id="scaleForm" placeholder="请选择公司规模">
+		    		<option value="">公司规模</option>
+		        </select>
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label for="exampleFormControlInput1" class="col-4">所在城市</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入你的城市" name="location">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+		<div class="row">
+      		<div class="col-1"></div>
+      		<div class="form-group col-5 row">
+		    	<label for="exampleFormControlInput1" class="text-sm col-4">联系人</label>
+		    	<input class="form-control form-control-sm col-8" type="text" placeholder="请输入联系人姓名" name="contactName">
+		  	</div>
+			<div class="form-group col-5 row">
+			    <label for="exampleFormControlInput1" class="col-4">联系方式</label>
+			   <input class="form-control form-control-sm col-8" type="text" placeholder="请输入联系方式" name="contactPhone">
+			</div>
+			<div class="col-1"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-1"></div>
+		  	<div class="form-group col-10">	  	
+		    <label for="exampleFormControlTextarea1">公司简介</label>
+		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>    
+		  	</div>
+		  	<div class="col-1"></div>
+      	</div>
+		</form>
+      <!-- 表单结束 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="address_sub">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 模态框结束 -->
+
+</div>
